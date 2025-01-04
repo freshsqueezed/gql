@@ -6,8 +6,7 @@
   "scripts": {
     "prepack": "npm run build",
     "build": "tsc --p ./tsconfig-build.json && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "prepare": "husky"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -40,6 +39,6 @@
     "access": "public"
   },
   "volta": {
-    "node": "20.5.1"
+    "node": "20.9.0"
   }
 }

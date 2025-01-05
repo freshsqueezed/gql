@@ -1,3 +1,10 @@
+## [1.1.11](https://github.com/freshsqueezed/gql/compare/v1.1.10...v1.1.11) (2025-01-05)
+
+
+### Bug Fixes
+
+* **production:** update config for memoization ([7087cb3](https://github.com/freshsqueezed/gql/commit/7087cb344bdab38091bcdc4fd1e1df75cd1a3c6a))
+
 ## [1.1.10](https://github.com/freshsqueezed/gql/compare/v1.1.9...v1.1.10) (2025-01-05)
 
 

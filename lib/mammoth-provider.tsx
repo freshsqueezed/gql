@@ -1,8 +1,5 @@
 import { createContext, useContext, ReactNode } from 'react';
-
-interface MammothClient {
-  link: string;
-}
+import { MammothClient } from './mammoth-client';
 
 // Context to store the client
 const MammothClientContext = createContext<MammothClient | null>(null);

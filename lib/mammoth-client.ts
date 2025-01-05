@@ -1,5 +1,5 @@
 export interface HttpLinkOptions {
-  link: string;
+  uri: string;
 }
 
 export class HttpLink {
@@ -7,10 +7,21 @@ export class HttpLink {
 
   constructor(options: HttpLinkOptions) {
     this.options = options;
-    console.log({ options: this.options });
   }
 }
 
+export interface MammothClientOptions {
+  link: HttpLink;
+}
+
 export class MammothClient {
-  constructor() {}
+  link: HttpLink;
+
+  constructor({ link }: MammothClientOptions) {
+    this.link = link;
+  }
+
+  request() {
+    console.log('api link', this.link.options.uri);
+  }
 }

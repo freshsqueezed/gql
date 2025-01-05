@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/freshsqueezed/gql/compare/v1.1.7...v1.1.8) (2025-01-05)
+
+
+### Bug Fixes
+
+* **request:** fix request pipeline ([66ef451](https://github.com/freshsqueezed/gql/commit/66ef4519d78b04ec440f3f737586ed8ed5b89100))
+
 ## [1.1.7](https://github.com/freshsqueezed/gql/compare/v1.1.6...v1.1.7) (2025-01-05)
 
 

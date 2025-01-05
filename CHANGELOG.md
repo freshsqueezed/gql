@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/freshsqueezed/gql/compare/v1.1.3...v1.1.4) (2025-01-05)
+
+
+### Bug Fixes
+
+* **client:** add query ability ([e2cbf2d](https://github.com/freshsqueezed/gql/commit/e2cbf2d789d026b3f1331d20b68f1e5d8b307675))
+
 ## [1.1.3](https://github.com/freshsqueezed/gql/compare/v1.1.2...v1.1.3) (2025-01-05)
 
 

@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/freshsqueezed/gql/compare/v1.1.5...v1.1.6) (2025-01-05)
+
+
+### Bug Fixes
+
+* **request:** update query passage: ([8df656f](https://github.com/freshsqueezed/gql/commit/8df656fcea134fb7924c0406243a0b130bc035a9))
+
 ## [1.1.5](https://github.com/freshsqueezed/gql/compare/v1.1.4...v1.1.5) (2025-01-05)
 
 

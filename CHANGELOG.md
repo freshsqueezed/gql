@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/freshsqueezed/gql/compare/v1.1.2...v1.1.3) (2025-01-05)
+
+
+### Bug Fixes
+
+* **options:** update vite  options ([0234a40](https://github.com/freshsqueezed/gql/commit/0234a40f3458761b1f1346389eb3853549feed30))
+
 ## [1.1.2](https://github.com/freshsqueezed/gql/compare/v1.1.1...v1.1.2) (2025-01-05)
 
 

@@ -1,3 +1,10 @@
+## [1.1.10](https://github.com/freshsqueezed/gql/compare/v1.1.9...v1.1.10) (2025-01-05)
+
+
+### Bug Fixes
+
+* **graphql:** fix infinite loop on query ([c537316](https://github.com/freshsqueezed/gql/commit/c537316866c3465bcbdfd3a822ff5f156fc636cd))
+
 ## [1.1.9](https://github.com/freshsqueezed/gql/compare/v1.1.8...v1.1.9) (2025-01-05)
 
 

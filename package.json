@@ -2,6 +2,13 @@
   "name": "@freshsqueezed/gql",
   "version": "1.1.0",
   "type": "module",
+  "source": "./lib/main.ts",
+  "main": "./dist/main.js",
+  "module": "./dist/main.js",
+  "typings": "./dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepack": "npm run build",
     "build": "tsc --p ./tsconfig-build.json && vite build",

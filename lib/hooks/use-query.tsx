@@ -2,14 +2,14 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import { DocumentNode } from 'graphql';
 import { useMammothClient } from '../mammoth-provider';
 
-interface QueryResult<TData> {
+interface QueryResult<TData = unknown> {
   data: TData | null;
   loading: boolean;
   error: string | null;
 }
 
-interface QueryOptions {
-  variables?: Record<string, unknown>;
+interface QueryOptions<TVariables = Record<string, unknown>> {
+  variables?: TVariables;
 }
 
 function usePrevious<T>(value: T): T | undefined {
@@ -23,7 +23,7 @@ function usePrevious<T>(value: T): T | undefined {
 async function fetchGraphQLData<TData>(
   client: ReturnType<typeof useMammothClient>,
   query: DocumentNode,
-  variables: Record<string, unknown>,
+  variables: Record<string, unknown>, // Keep this as Record<string, unknown>
 ): Promise<TData> {
   try {
     const result = await client.query<TData>(query, variables);
@@ -35,11 +35,11 @@ async function fetchGraphQLData<TData>(
   }
 }
 
-export function useQuery<TData = object>(
+export function useQuery<TData = unknown, TVariables = Record<string, unknown>>(
   query: DocumentNode,
-  options: QueryOptions = {},
+  options: QueryOptions<TVariables> = {},
 ): QueryResult<TData> {
-  const { variables = {} } = options;
+  const { variables = {} as TVariables } = options;
   const client = useMammothClient();
   const [data, setData] = useState<TData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -52,13 +52,16 @@ export function useQuery<TData = object>(
   }, [prevVariables, variables]);
 
   useEffect(() => {
-    // Only fetch data if variables have changed or the previous data was not loaded
     if (!isVariablesChanged()) return;
 
     const fetchData = async () => {
       setLoading(true);
       try {
-        const result = await fetchGraphQLData<TData>(client, query, variables);
+        const result = await fetchGraphQLData<TData>(
+          client,
+          query,
+          variables as Record<string, unknown>,
+        );
         setData(result);
         setError(null);
       } catch (err) {

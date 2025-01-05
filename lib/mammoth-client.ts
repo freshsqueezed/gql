@@ -1,4 +1,4 @@
-import { DocumentNode, print } from 'graphql';
+import { DocumentNode } from 'graphql';
 
 //
 export interface HttpLinkOptions {
@@ -34,7 +34,7 @@ export class MammothClient {
           ...this.link.options.headers,
         },
         body: JSON.stringify({
-          query: print(query),
+          query,
           variables,
         }),
       });

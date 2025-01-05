@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/freshsqueezed/gql/compare/v1.1.0...v1.1.1) (2025-01-05)
+
+
+### Bug Fixes
+
+* **types:** Update type references ([11edb32](https://github.com/freshsqueezed/gql/commit/11edb328d12e9840a02eb947364a281d8140a6d1))
+
 # [1.1.0](https://github.com/freshsqueezed/gql/compare/v1.0.0...v1.1.0) (2025-01-05)
 
 

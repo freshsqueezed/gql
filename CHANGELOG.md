@@ -1,3 +1,10 @@
+## [1.1.14](https://github.com/freshsqueezed/gql/compare/v1.1.13...v1.1.14) (2025-01-05)
+
+
+### Bug Fixes
+
+* **client:** add credentials options to request ([cbc0457](https://github.com/freshsqueezed/gql/commit/cbc0457c590872ae5624b441cf6388dc0650a145))
+
 ## [1.1.13](https://github.com/freshsqueezed/gql/compare/v1.1.12...v1.1.13) (2025-01-05)
 
 

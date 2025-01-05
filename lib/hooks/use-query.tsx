@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { DocumentNode } from 'graphql';
 import { useMammothClient } from '../mammoth-provider';
 
@@ -8,34 +8,52 @@ interface QueryResult<TData> {
   error: string | null;
 }
 
-export function useQuery<TData = object>(
+export function useQuery<TData = Record<string, unknown>>(
   query: DocumentNode,
-  variables: Record<string, object> = {},
+  variables: Record<string, unknown> = {},
 ): QueryResult<TData> {
   const client = useMammothClient();
   const [data, setData] = useState<TData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Memoize the variables to prevent triggering effect on every render
+  const memoizedVariables = useMemo(() => variables, [variables]);
+
   useEffect(() => {
+    let isMounted = true; // To prevent state updates on unmounted components
+
     const fetchData = async () => {
+      setLoading(true);
+
       try {
-        setLoading(true);
-        const result = await client.query(query, variables);
-        setData(result);
-        setError(null);
+        const result = await client.query<TData>(query, memoizedVariables);
+
+        if (isMounted) {
+          setData(result);
+          setError(null);
+        }
       } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message || 'An error occurred');
+        if (isMounted) {
+          if (err instanceof Error) {
+            setError(err.message || 'An error occurred');
+          }
           setData(null);
         }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchData();
-  }, [client, query, variables]);
+
+    // Cleanup function to set isMounted to false when the component unmounts
+    return () => {
+      isMounted = false;
+    };
+  }, [client, query, memoizedVariables]);
 
   return { data, loading, error };
 }

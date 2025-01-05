@@ -8,7 +8,7 @@ interface QueryResult<TData> {
   error: string | null;
 }
 
-export function useQuery<TData = Record<string, unknown>>(
+export function useQuery<TData = object>(
   query: DocumentNode,
   variables: Record<string, unknown> = {},
 ): QueryResult<TData> {
@@ -17,21 +17,23 @@ export function useQuery<TData = Record<string, unknown>>(
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Memoize the query and variables to prevent unnecessary re-renders
+  const memoizedQuery = useMemo(() => query, [query]);
   const memoizedVariables = useMemo(() => variables, [variables]);
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
-
       try {
-        const result = await client.query<TData>(query, memoizedVariables);
-
+        setLoading(true);
+        const result = await client.query<TData>(
+          memoizedQuery,
+          memoizedVariables,
+        );
         setData(result);
         setError(null);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message || 'An error occurred');
-
           setData(null);
         }
       } finally {
@@ -40,7 +42,7 @@ export function useQuery<TData = Record<string, unknown>>(
     };
 
     fetchData();
-  }, [client, query, memoizedVariables]);
+  }, [client, memoizedQuery, memoizedVariables]);
 
   return { data, loading, error };
 }

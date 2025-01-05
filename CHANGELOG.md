@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/freshsqueezed/gql/compare/v1.1.4...v1.1.5) (2025-01-05)
+
+
+### Bug Fixes
+
+* **types:** update hooks exports ([7862ac0](https://github.com/freshsqueezed/gql/commit/7862ac08970db47f61422587207c4bfbb9a948d5))
+
 ## [1.1.4](https://github.com/freshsqueezed/gql/compare/v1.1.3...v1.1.4) (2025-01-05)
 
 

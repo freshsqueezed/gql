@@ -9,7 +9,6 @@ interface QueryResult<TData> {
 }
 
 interface QueryOptions {
-  query: DocumentNode;
   variables?: Record<string, unknown>;
 }
 
@@ -36,10 +35,11 @@ async function fetchGraphQLData<TData>(
   }
 }
 
-export function useQuery<TData = object>({
-  query,
-  variables = {},
-}: QueryOptions): QueryResult<TData> {
+export function useQuery<TData = object>(
+  query: DocumentNode,
+  options: QueryOptions = {},
+): QueryResult<TData> {
+  const { variables = {} } = options;
   const client = useMammothClient();
   const [data, setData] = useState<TData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -61,10 +61,10 @@ export function useQuery<TData = object>({
         const result = await fetchGraphQLData<TData>(client, query, variables);
         setData(result);
         setError(null);
-      } catch (error) {
-        if (error instanceof Error) {
+      } catch (err) {
+        if (err instanceof Error) {
           setData(null);
-          setError(error.message || 'An error occurred');
+          setError(err.message || 'An error occurred');
         }
       } finally {
         setLoading(false);

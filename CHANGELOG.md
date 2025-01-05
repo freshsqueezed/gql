@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/freshsqueezed/gql/compare/v1.0.0...v1.1.0) (2025-01-05)
+
+
+### Bug Fixes
+
+* **visibility:** update visibility ([cf9b5d2](https://github.com/freshsqueezed/gql/commit/cf9b5d2e29119c0436e69e2f60a4f6298879b0be))
+
+
+### Features
+
+* **init:** initial release ([1c0a45f](https://github.com/freshsqueezed/gql/commit/1c0a45f3f80dd2a4a8f4e51a70f1e8a0adda54a7))
+
 # 1.0.0 (2025-01-04)
 
 

@@ -1,3 +1,10 @@
+## [1.1.12](https://github.com/freshsqueezed/gql/compare/v1.1.11...v1.1.12) (2025-01-05)
+
+
+### Bug Fixes
+
+* **client:** reconfigure client for cookie inclusion ([4c45d44](https://github.com/freshsqueezed/gql/commit/4c45d449bf3e8b8df54bcb7356eb49dd91460216))
+
 ## [1.1.11](https://github.com/freshsqueezed/gql/compare/v1.1.10...v1.1.11) (2025-01-05)
 
 

@@ -1,1 +1,1 @@
-# @freshsqueezed/client
+# @freshsqueezed/mammothreact

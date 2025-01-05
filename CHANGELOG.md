@@ -1,3 +1,10 @@
+## [1.1.13](https://github.com/freshsqueezed/gql/compare/v1.1.12...v1.1.13) (2025-01-05)
+
+
+### Bug Fixes
+
+* **generics:** add generics extension to type qureies ([a63dd94](https://github.com/freshsqueezed/gql/commit/a63dd94943501836ae755002c295b2b9db2a1374))
+
 ## [1.1.12](https://github.com/freshsqueezed/gql/compare/v1.1.11...v1.1.12) (2025-01-05)
 
 

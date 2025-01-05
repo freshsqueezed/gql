@@ -3,7 +3,7 @@ import { DocumentNode, print } from 'graphql';
 export interface HttpLinkOptions {
   uri: string;
   headers?: Record<string, string>;
-  credentials?: 'same-origin' | 'include' | 'omit'; // Credentials option for cookies
+  credentials?: 'same-origin' | 'include' | 'omit'; // Default can be 'same-origin'
 }
 
 export class HttpLink {
@@ -28,7 +28,6 @@ export class MammothClient {
   async query<TData = unknown>(
     query: DocumentNode,
     variables: Record<string, unknown> = {},
-    includeCookies: boolean = false, // Optional flag for including cookies
   ): Promise<TData> {
     try {
       const response = await fetch(this.link.options.uri, {
@@ -41,7 +40,7 @@ export class MammothClient {
           query: print(query),
           variables,
         }),
-        credentials: includeCookies ? 'include' : 'same-origin', // Use 'include' or 'same-origin' for cookies
+        credentials: this.link.options.credentials ?? 'same-origin',
       });
 
       if (!response.ok) {

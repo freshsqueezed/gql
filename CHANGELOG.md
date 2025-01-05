@@ -1,3 +1,10 @@
+## [1.1.9](https://github.com/freshsqueezed/gql/compare/v1.1.8...v1.1.9) (2025-01-05)
+
+
+### Bug Fixes
+
+* **query:** update query usage ([c5dfa66](https://github.com/freshsqueezed/gql/commit/c5dfa6686025cfea001ebfc7134daf5b78224581))
+
 ## [1.1.8](https://github.com/freshsqueezed/gql/compare/v1.1.7...v1.1.8) (2025-01-05)
 
 

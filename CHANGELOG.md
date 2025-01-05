@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/freshsqueezed/gql/compare/v1.1.1...v1.1.2) (2025-01-05)
+
+
+### Bug Fixes
+
+* **options:** add config options ([ec84cfe](https://github.com/freshsqueezed/gql/commit/ec84cfebd1bfb80ff2111e523bc9d6c69a51b3da))
+
 ## [1.1.1](https://github.com/freshsqueezed/gql/compare/v1.1.0...v1.1.1) (2025-01-05)
 
 

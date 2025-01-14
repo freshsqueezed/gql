@@ -1,4 +1,4 @@
-# @freshsqueezed/mammothreact
+# @freshsqueezed/gql
 
 `@freshsqueezed/mammothreact` is a powerful React library that integrates seamlessly with GraphQL. It simplifies creating a client for your GraphQL API and handling queries in your React components.
 

@@ -1,6 +1,6 @@
 # @freshsqueezed/gql
 
-`@freshsqueezed/mammothreact` is a powerful React library that integrates seamlessly with GraphQL. It simplifies creating a client for your GraphQL API and handling queries in your React components.
+`@freshsqueezed/gql` is a powerful React library that integrates seamlessly with GraphQL. It simplifies creating a client for your GraphQL API and handling queries in your React components.
 
 This guide walks you through setting up a Mammoth Client and using it to fetch data using GraphQL queries in your React application.
 

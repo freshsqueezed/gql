@@ -16,7 +16,7 @@ npm install @freshsqueezed/gql graphql graphql-tag
 
 ### Creating the Mammoth Client
 
-To connect to your GraphQL API, you need to create a MammothClient and wrap your application in a MammothProvider. This provider will enable GraphQL queries and mutations within your app.
+To connect to your GraphQL API, you need to create a `MammothClient` and wrap your application in a `MammothProvider`. This provider will enable GraphQL queries and mutations within your app.
 
 Here’s how you can set it up in your main entry file (e.g., main.tsx):
 

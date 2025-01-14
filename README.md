@@ -89,7 +89,7 @@ export default Home;
 
 ### Explanation:
 
-1. Defining a GraphQL Query: The ME_QUERY fetches the authenticated user’s ID, email, and first name from your GraphQL server.
+1. Defining a GraphQL Query: The `ME_QUERY` fetches the authenticated user’s ID, email, and first name from your GraphQL server.
 
 2. `useQuery` Hook: The `useQuery` hook from `@freshsqueezed/gql` is used to execute the GraphQL query within the component. It returns the data, loading, and error states, making it easy to manage UI based on the query’s status.
 

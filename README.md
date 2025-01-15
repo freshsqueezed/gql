@@ -1,3 +1,5 @@
+![example workflow](https://github.com/freshsqueezed/gql/actions/workflows/release-package.yml/badge.svg)
+
 # @freshsqueezed/gql
 
 `@freshsqueezed/gql` is a powerful React library that integrates seamlessly with GraphQL. It simplifies creating a client for your GraphQL API and handling queries in your React components.

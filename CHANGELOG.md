@@ -1,3 +1,11 @@
+## [1.2.1](https://github.com/freshsqueezed/gql/compare/v1.2.0...v1.2.1) (2025-01-15)
+
+
+### Bug Fixes
+
+* **request:** update cache implementation ([0eb5182](https://github.com/freshsqueezed/gql/commit/0eb51823b91b72c50aed6088aa66d1a4f9e797aa))
+* **request:** update cache implementation ([6c8f9fe](https://github.com/freshsqueezed/gql/commit/6c8f9fe8e3597c3b2dee6da12994991d0b31a39e))
+
 # [1.2.0](https://github.com/freshsqueezed/gql/compare/v1.1.14...v1.2.0) (2025-01-15)
 
 

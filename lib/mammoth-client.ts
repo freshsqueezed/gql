@@ -90,7 +90,7 @@ export interface MammothClientOptions<TData> {
   cache: GraphQLCache<TData>;
 }
 
-export class MammothClient<TData> {
+export class MammothClient<TData = unknown> {
   link: HttpLink;
   cache: GraphQLCache<TData>;
 

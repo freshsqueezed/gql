@@ -1,20 +1,16 @@
-/// <reference types="vitest" />
 import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
+import { defineConfig as defineViteConfig, mergeConfig } from 'vite';
+import { defineConfig as defineVitestConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 
-export default defineConfig({
+const viteConfig = defineViteConfig({
   plugins: [
     react(),
     dts({
       include: ['lib'],
     }),
   ],
-  test: {
-    globals: true,
-    silent: true,
-  },
   build: {
     copyPublicDir: false,
     lib: {
@@ -27,3 +23,11 @@ export default defineConfig({
     },
   },
 });
+
+const vitestConfig = defineVitestConfig({
+  test: {
+    silent: true,
+  },
+});
+
+export default mergeConfig(viteConfig, vitestConfig);

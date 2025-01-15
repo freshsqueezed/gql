@@ -1,6 +1,6 @@
 {
   "name": "@freshsqueezed/gql",
-  "version": "1.1.14",
+  "version": "1.2.0",
   "type": "module",
   "source": "./lib/main.ts",
   "main": "./dist/main.js",

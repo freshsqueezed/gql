@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/freshsqueezed/gql/compare/v1.1.14...v1.2.0) (2025-01-15)
+
+
+### Features
+
+* **caching:** add caching class for initial run ([#1](https://github.com/freshsqueezed/gql/issues/1)) ([55ffa35](https://github.com/freshsqueezed/gql/commit/55ffa35cea5f7eb6e64a92e73a11d9a1670bced4))
+
 ## [1.1.14](https://github.com/freshsqueezed/gql/compare/v1.1.13...v1.1.14) (2025-01-05)
 
 

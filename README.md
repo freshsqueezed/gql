@@ -31,7 +31,6 @@ import App from './components/app';
 const client = new MammothClient({
   link: new HttpLink({
     uri: 'http://localhost:3000/graphql',
-    credentials: 'include',
   }),
 });
 

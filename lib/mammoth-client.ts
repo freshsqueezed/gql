@@ -18,12 +18,19 @@ export interface CacheOptions {
   maxAge?: number;
 }
 
-export class GraphQLCache {
-  private cache: Map<string, { data: unknown; expiry: number }>;
+interface CacheEntry<T> {
+  data: T;
+  expiry: number;
+}
+
+export class GraphQLCache<TData = unknown> {
+  private entityCache: Record<string, TData>;
+  private queryCache: Map<string, CacheEntry<TData>>;
   private maxAge: number;
 
   constructor(options: CacheOptions = {}) {
-    this.cache = new Map();
+    this.entityCache = {};
+    this.queryCache = new Map();
     this.maxAge = options.maxAge || 300000;
   }
 
@@ -31,54 +38,73 @@ export class GraphQLCache {
     query: DocumentNode,
     variables: Record<string, unknown>,
   ): string {
-    return JSON.stringify({ query: print(query), variables });
+    return JSON.stringify({
+      query: print(query),
+      variables,
+    });
   }
 
-  get(query: DocumentNode, variables: Record<string, unknown>): unknown | null {
+  writeNormalizedData(key: string, data: TData): void {
+    this.entityCache[key] = data;
+  }
+
+  readNormalizedData(key: string): TData | null {
+    return this.entityCache[key] || null;
+  }
+
+  get(query: DocumentNode, variables: Record<string, unknown>): TData | null {
     const key = this.generateCacheKey(query, variables);
-    const cached = this.cache.get(key);
+    const cached = this.queryCache.get(key);
 
     if (cached && Date.now() < cached.expiry) {
       return cached.data;
     }
 
-    this.cache.delete(key);
+    this.queryCache.delete(key);
     return null;
   }
 
   set(
     query: DocumentNode,
     variables: Record<string, unknown>,
-    data: unknown,
+    data: TData,
   ): void {
     const key = this.generateCacheKey(query, variables);
-    this.cache.set(key, { data, expiry: Date.now() + this.maxAge });
+
+    this.queryCache.set(key, { data, expiry: Date.now() + this.maxAge });
+
+    if (typeof data === 'object' && data !== null && 'id' in data) {
+      const entity = data as { id: string };
+      this.writeNormalizedData(entity.id, data);
+    }
   }
 
   clear(): void {
-    this.cache.clear();
+    this.entityCache = {};
+    this.queryCache.clear();
   }
 }
 
-export interface MammothClientOptions {
+export interface MammothClientOptions<TData> {
   link: HttpLink;
-  cache: GraphQLCache;
+  cache: GraphQLCache<TData>;
 }
 
-export class MammothClient {
+export class MammothClient<TData> {
   link: HttpLink;
-  cache: GraphQLCache;
+  cache: GraphQLCache<TData>;
 
-  constructor({ link, cache }: MammothClientOptions) {
+  constructor({ link, cache }: MammothClientOptions<TData>) {
     this.link = link;
     this.cache = cache;
   }
 
-  async query<TData = unknown>(
+  async query<TData>(
     query: DocumentNode,
     variables: Record<string, unknown> = {},
   ): Promise<TData> {
-    const cachedData = this.cache?.get(query, variables);
+    const cachedData = this.cache.get(query, variables);
+
     if (cachedData) {
       return cachedData as TData;
     }
@@ -111,7 +137,7 @@ export class MammothClient {
         );
       }
 
-      const data = responseBody.data as TData;
+      const data = responseBody.data;
 
       this.cache.set(query, variables, data);
 

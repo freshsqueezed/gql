@@ -27,13 +27,14 @@ Here’s how you can set it up in your main entry file (e.g., main.tsx):
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { MammothProvider, MammothClient, HttpLink } from '@freshsqueezed/gql';
+import { MammothProvider, MammothClient, HttpLink, GraphQLCache } from '@freshsqueezed/gql';
 import App from './components/app';
 
 const client = new MammothClient({
   link: new HttpLink({
     uri: 'http://localhost:3000/graphql',
   }),
+  cache: new GraphQLCache({}),
 });
 
 createRoot(document.getElementById('root')!).render(
